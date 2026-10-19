@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace BaobabRidgeWildlifeRehabilitationRecordsSystem
+namespace Baobab_Ridge_Wildlife_Rehabilitation_Records_System
 {
     /// <summary>
     /// Application entry point.
@@ -15,7 +15,7 @@ namespace BaobabRidgeWildlifeRehabilitationRecordsSystem
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new MainForm());
+            Application.Run(new Animals());
         }
     }
 }
