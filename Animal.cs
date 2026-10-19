@@ -1,6 +1,6 @@
 using System;
 
-namespace BaobabRidgeWildlifeRehabilitationRecordsSystem
+namespace Baobab_Ridge_Wildlife_Rehabilitation_Records_System
 {
     /// <summary>
     /// Represents a single animal record at Baobab Ridge Wildlife Rehabilitation Centre.
@@ -16,7 +16,7 @@ namespace BaobabRidgeWildlifeRehabilitationRecordsSystem
         public string HousingUnit { get; set; } = string.Empty;
 
         /// <summary>
-        /// Creates a new Animal instance.
+        /// Creates a new Animal instance with all fields.
         /// </summary>
         public Animal(string id, string name, string species, int age, int recoveryScore, string status, string housingUnit)
         {
@@ -30,12 +30,12 @@ namespace BaobabRidgeWildlifeRehabilitationRecordsSystem
         }
 
         /// <summary>
-        /// Parameterless constructor required for some binding scenarios.
+        /// Parameterless constructor.
         /// </summary>
         public Animal() { }
 
         /// <summary>
-        /// Converts the animal into a pipe-delimited line suitable for animals.txt.
+        /// Converts the animal into a pipe-delimited line for animals.txt.
         /// </summary>
         public string ToFileLine()
         {
@@ -44,13 +44,10 @@ namespace BaobabRidgeWildlifeRehabilitationRecordsSystem
 
         /// <summary>
         /// Single classification method that determines Status and Housing Unit from Recovery Score.
-        /// Must be used by both Add and Update operations.
+        /// Called by both Add and Update operations.
         /// </summary>
-        /// <param name="score">Recovery score (0-100).</param>
-        /// <returns>Tuple of (Status, HousingUnit).</returns>
         public static (string Status, string HousingUnit) Classify(int score)
         {
-            // Classification bands as specified in the project brief (no gaps).
             if (score >= 0 && score <= 19)
                 return ("Critical", "Intensive Care Unit");
             if (score >= 20 && score <= 39)
@@ -62,7 +59,6 @@ namespace BaobabRidgeWildlifeRehabilitationRecordsSystem
             if (score >= 80 && score <= 100)
                 return ("Release-Ready", "Pre-Release Camp");
 
-            // Should never reach here if validation is correct, but keep defensive.
             throw new ArgumentOutOfRangeException(nameof(score), "Recovery Score must be between 0 and 100.");
         }
     }
